@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import styled, { css } from 'styled-components';
+import React, {useState, useEffect} from 'react';
+import {View, TextInput, Text} from 'react-native';
+import styled, {css} from 'styled-components';
 
 import Image from './Image';
 import CheckIcon from '../assets/images/check.png';
 import ErrorIcon from '../assets/images/error.png';
 
-const Wrapper = styled.label`
+const Wrapper = styled(View)`
   background-color: #fff;
   border: solid 2px ${props => (props.focus ? '#3366FF' : '#ccc')};
   border-radius: 6px;
-  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -44,14 +44,12 @@ const Wrapper = styled.label`
   }
 `;
 
-const Label = styled.span`
+const Label = styled(Text)`
   color: #ccc;
   font-family: inherit;
   font-size: ${props => (props.float ? '12px' : '18px')};
   font-weight: 500;
   font-style: normal;
-  font-stretch: normal;
-  letter-spacing: normal;
   line-height: 1.5;
   position: relative;
   top: ${props => (props.float ? '-6px' : '7px')};
@@ -63,20 +61,17 @@ const Label = styled.span`
     `};
 `;
 
-const Field = styled.input`
+const Field = styled(TextInput)`
   background: transparent;
   font-family: inherit;
   font-size: 18px;
   font-weight: 500;
   font-style: normal;
-  font-stretch: normal;
   line-height: 1.33;
-  letter-spacing: normal;
   color: #666;
   padding: 0;
 
   width: 100%;
-  height: inherit;
 
   ::placeholder {
     color: #999;
@@ -92,7 +87,7 @@ const Field = styled.input`
   }
 `;
 
-const Container = styled.div`
+const Container = styled(View)`
   position: relative;
   margin: 8px 0;
 `;
@@ -123,7 +118,7 @@ const Input = props => {
     props.onChangeHandler({
       value: event.target.value,
       name: props.name,
-      valid
+      valid,
     });
   };
 
@@ -132,12 +127,12 @@ const Input = props => {
     setIsValid(null);
   };
 
-  const { name, placeholder, value, isDisabled } = props;
+  const {name, placeholder, value, isDisabled} = props;
 
   return (
     <Container>
       <Wrapper isDisabled={isDisabled} isValid={isValid}>
-        <section>
+        <View>
           <Label float={floating} isDisabled={isDisabled}>
             {placeholder}
           </Label>
@@ -148,18 +143,17 @@ const Input = props => {
             onFocus={onFocus}
             disabled={isDisabled}
             value={value}
-          />{' '}
-          <br />
-        </section>
+          />
+        </View>
         {isValid && (
-          <div>
+          <View>
             <Image src={CheckIcon} alt="Ícone de sucesso" />
-          </div>
+          </View>
         )}
         {isValid === false && (
-          <div>
+          <View>
             <Image src={ErrorIcon} alt="Ícone de erro" />
-          </div>
+          </View>
         )}
       </Wrapper>
     </Container>

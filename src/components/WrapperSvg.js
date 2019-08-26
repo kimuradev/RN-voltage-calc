@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import {View} from 'react-native';
 
-const WrapperSvg = styled.div`
+const WrapperSvg = styled(View)`
   display: flex;
   justify-content: center;
   align-content: center;

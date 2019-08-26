@@ -1,10 +1,11 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import {Text, Button as RNButton} from 'react-native';
+import styled, {css} from 'styled-components';
 import PropTypes from 'prop-types';
 
-import Circle from './animations/Circle';
+// import Circle from './animations/Circle';
 
-const Btn = styled('button')`
+const Btn = styled(RNButton)`
   background-color: #3366ff;
   height: 80px;
   width: 100%;
@@ -13,18 +14,18 @@ const Btn = styled('button')`
   font-size: 16px;
   font-weight: 600;
   font-style: normal;
-  font-stretch: normal;
+  /* font-stretch: normal; */
   line-height: 1.5;
-  letter-spacing: normal;
+  /* letter-spacing: normal; */
   padding: 24px;
   border-radius: 4px;
 
-  outline: 0;
+  /* outline: 0; */
   border: 0;
-  user-select: none;
-  white-space: nowrap;
+  /* user-select: none; */
+  /* white-space: nowrap; */
   text-align: left;
-  display: inline-flex;
+  /* display: inline-flex; */
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -54,28 +55,27 @@ const Btn = styled('button')`
   }
 `;
 
-const Button = ({ arrow, children, isLoading, ...props }) => (
+const Button = ({arrow, children, isLoading, ...props}) => (
   <Btn {...props} isLoading>
     {isLoading ? (
-      <Circle />
+      <Text>Loading...</Text>
     ) : (
+      // <Circle />
       <React.Fragment>
-        <span>{children}</span>
+        <Text>{children}</Text>
         {arrow && (
           <svg
             width="24px"
             height="24px"
             viewBox="0 0 24 24"
             version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+            xmlns="http://www.w3.org/2000/svg">
             <g
               id="Symbols"
               stroke="none"
               strokeWidth="1"
               fill="none"
-              fillRule="evenodd"
-            >
+              fillRule="evenodd">
               <g id="mob/ico/7º/next">
                 <g>
                   <rect id="bounding-box" x="0" y="0" width="24" height="24" />
@@ -96,11 +96,11 @@ const Button = ({ arrow, children, isLoading, ...props }) => (
 );
 
 Button.defaultProps = {
-  arrow: false
+  arrow: false,
 };
 
 Button.propTypes = {
-  arrow: PropTypes.bool
+  arrow: PropTypes.bool,
 };
 
 export default Button;
