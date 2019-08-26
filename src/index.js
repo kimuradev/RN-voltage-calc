@@ -1,9 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './style.scss';
+import Routes from './routes';
 
-
-ReactDOM.render(<App />, document.getElementById('root'));
-
-serviceWorker.unregister();
+export default function App() {
+  return <Routes />;
+}
