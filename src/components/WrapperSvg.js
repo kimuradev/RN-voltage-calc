@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {View} from 'react-native';
 
 const WrapperSvg = styled(View)`
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-content: center;
   width: 100%;

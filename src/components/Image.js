@@ -1,7 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled, {css} from 'styled-components';
+import {Image as RNImage} from 'react-native';
 import PropTypes from 'prop-types';
 
-const Image = styled('img')`
+const Image = styled(RNImage)`
   ${props =>
     props.center &&
     css`
@@ -11,11 +12,11 @@ const Image = styled('img')`
 `;
 
 Image.defaultProps = {
-  center: false
+  center: false,
 };
 
 Image.propTypes = {
-  center: PropTypes.bool
+  center: PropTypes.bool,
 };
 
 export default Image;

@@ -107,8 +107,9 @@ const Input = props => {
   };
 
   const onChange = event => {
+    console.log(event);
     let valid;
-    if (event.target.value.length === 0 || event.target.value === '0') {
+    if (event.length === 0 || event === '0') {
       valid = false;
       setIsValid(false);
     } else {
@@ -116,7 +117,7 @@ const Input = props => {
       setIsValid(true);
     }
     props.onChangeHandler({
-      value: event.target.value,
+      value: event,
       name: props.name,
       valid,
     });
@@ -139,7 +140,7 @@ const Input = props => {
           <Field
             id={`id-${name}`}
             name={name}
-            onChange={onChange}
+            onChangeText={onChange}
             onFocus={onFocus}
             disabled={isDisabled}
             value={value}
@@ -147,12 +148,18 @@ const Input = props => {
         </View>
         {isValid && (
           <View>
-            <Image src={CheckIcon} alt="Ícone de sucesso" />
+            <Image
+              source={require('../assets/images/check.png')}
+              alt="Ícone de sucesso"
+            />
           </View>
         )}
         {isValid === false && (
           <View>
-            <Image src={ErrorIcon} alt="Ícone de erro" />
+            <Image
+              source={require('../assets/images/error.png')}
+              alt="Ícone de erro"
+            />
           </View>
         )}
       </Wrapper>

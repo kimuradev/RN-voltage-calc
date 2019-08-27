@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import {View} from 'react-native';
+import {ScrollView} from 'react-native';
 
-const Container = styled(View)`
+const Container = styled(ScrollView)`
   padding: 16px;
 `;
 export default Container;

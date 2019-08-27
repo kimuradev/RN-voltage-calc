@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Image} from 'react-native';
 
 import Input from '../components/Input';
 import Button from '../components/Button';
@@ -7,7 +7,7 @@ import Result from '../components/Result';
 import Container from '../components/Container';
 import FadeInOut from '../components/FadeInOut';
 import WrapperSvg from '../components/WrapperSvg';
-import {ReactComponent as VoltageSvg} from '../assets/images/voltage.svg';
+import VoltageSvg from '../assets/images/voltage.png';
 
 const getInitialData = () => {
   return {
@@ -149,8 +149,8 @@ export default function Home() {
   };
 
   return (
-    <View>
-      {/* <Input
+    <Container>
+      <Input
         name="vin"
         placeholder="Voltage IN (volts)"
         onChangeHandler={onChangeHandler}
@@ -182,14 +182,14 @@ export default function Home() {
         isDisabled={data.vin.isValid && data.r1.isValid && data.r2.isValid}
         reset={resetField}
       />
-      <FadeInOut className={!calculated ? 'fadeIn' : 'fadeOut'}>
+      <FadeInOut visible={!calculated}>
         <WrapperSvg>
-          <VoltageSvg />
+          <Image source={require('../assets/images/voltage.png')} />
         </WrapperSvg>
       </FadeInOut>
-      <FadeInOut className={calculated ? 'fadeIn' : 'fadeOut'}>
+      <FadeInOut visible={calculated}>
         <Result result={result} unit={unit} />
-      </FadeInOut> */}
+      </FadeInOut>
 
       <Button
         title="Calculate"
@@ -198,55 +198,6 @@ export default function Home() {
         disabled={isButtonDisabled()}>
         {!calculated ? 'CALCUTE' : 'CLEAR'}
       </Button>
-    </View>
-    // <Container>
-    //   <Input
-    //     name="vin"
-    //     placeholder="Voltage IN (volts)"
-    //     onChangeHandler={onChangeHandler}
-    //     value={data.vin.value}
-    //     isDisabled={data.r1.isValid && data.r2.isValid && data.vout.isValid}
-    //     reset={resetField}
-    //   />
-    //   <Input
-    //     name="r1"
-    //     placeholder="Resistor 1 (ohms)"
-    //     onChangeHandler={onChangeHandler}
-    //     value={data.r1.value}
-    //     isDisabled={data.vin.isValid && data.r2.isValid && data.vout.isValid}
-    //     reset={resetField}
-    //   />
-    //   <Input
-    //     name="r2"
-    //     placeholder="Resistor 2 (ohms)"
-    //     onChangeHandler={onChangeHandler}
-    //     value={data.r2.value}
-    //     isDisabled={data.vin.isValid && data.r1.isValid && data.vout.isValid}
-    //     reset={resetField}
-    //   />
-    //   <Input
-    //     name="vout"
-    //     placeholder="Voltage OUT (volts)"
-    //     onChangeHandler={onChangeHandler}
-    //     value={data.vout.value}
-    //     isDisabled={data.vin.isValid && data.r1.isValid && data.r2.isValid}
-    //     reset={resetField}
-    //   />
-    //   <FadeInOut className={!calculated ? 'fadeIn' : 'fadeOut'}>
-    //     <WrapperSvg>
-    //       <VoltageSvg />
-    //     </WrapperSvg>
-    //   </FadeInOut>
-    //   <FadeInOut className={calculated ? 'fadeIn' : 'fadeOut'}>
-    //     <Result result={result} unit={unit} />
-    //   </FadeInOut>
-
-    //   <Button
-    //     onClick={!calculated ? onClickCalculate : onClickClear}
-    //     isLoading={isLoading}
-    //     disabled={isButtonDisabled()}>
-    //     {!calculated ? 'CALCUTE' : 'CLEAR'}
-    //   </Button>
-    // </Container>
+    </Container>
   );
 }
