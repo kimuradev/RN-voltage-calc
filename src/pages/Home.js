@@ -27,6 +27,7 @@ export default function Home() {
   const [resetField, setResetField] = useState(false);
 
   const onChangeHandler = event => {
+    debugger;
     setData({
       ...data,
       [event.name]: {
@@ -182,7 +183,7 @@ export default function Home() {
         isDisabled={data.vin.isValid && data.r1.isValid && data.r2.isValid}
         reset={resetField}
       />
-      <FadeInOut visible={!calculated}>
+      {/* <FadeInOut visible={!calculated}>
         <WrapperSvg>
           <Image source={require('../assets/images/voltage.png')} />
         </WrapperSvg>
@@ -197,7 +198,7 @@ export default function Home() {
         isLoading={isLoading}
         disabled={isButtonDisabled()}>
         {!calculated ? 'CALCUTE' : 'CLEAR'}
-      </Button>
+      </Button> */}
     </Container>
   );
 }

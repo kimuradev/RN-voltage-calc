@@ -3,11 +3,15 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "react-native start",
-    "test": "jest"
+    "start": "react-native start --port 8090",
+    "test": "jest",
+    "react-devtool": "react-devtools",
+    "menu": "adb shell input keyevent 82"
   },
   "dependencies": {
     "react": "16.8.6",
+    "react-devtools": "^3.6.3",
+    "react-devtools-core": "^3.6.3",
     "react-native": "0.60.5",
     "react-native-gesture-handler": "^1.4.1",
     "react-native-vector-icons": "^6.6.0",
