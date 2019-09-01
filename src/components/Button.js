@@ -1,43 +1,44 @@
 import React from 'react';
-import {Text, Button as RNButton} from 'react-native';
+import {Text, Button as RNButton, TouchableOpacity} from 'react-native';
 import styled, {css} from 'styled-components';
 import PropTypes from 'prop-types';
 
 // import Circle from './animations/Circle';
 
-const Btn = styled(RNButton)`
+const Btn = styled(TouchableOpacity)`
+  border-radius: 6px;
+  height: 60px;
+  padding-top: 10px;
+  padding-left: 24px;
+  padding-bottom: 10px;
+  padding-right: 24px;
+  color: white;
   background-color: #3366ff;
-  height: 80px;
   width: 100%;
-
-  color: #fff;
+  margin-top: 24px;
+  margin-bottom: 24px;
   font-size: 16px;
   font-weight: 600;
   font-style: normal;
-  /* font-stretch: normal; */
   line-height: 1.5;
-  /* letter-spacing: normal; */
   padding: 24px;
   border-radius: 4px;
-
-  /* outline: 0; */
   border: 0;
-  /* user-select: none; */
-  /* white-space: nowrap; */
   text-align: left;
-  /* display: inline-flex; */
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 
-  &:disabled {
-    transition: #ccc 1s linear;
-    background-color: #cccccc;
-
-    &:hover {
+  ${props =>
+    props.disabled &&
+    css`
       background-color: #cccccc;
-    }
-  }
+      color: white;
+
+      &:hover {
+        background-color: #cccccc;
+      }
+    `};
 
   ${props =>
     props.fixed &&
@@ -62,7 +63,7 @@ const Button = ({arrow, children, isLoading, ...props}) => (
     ) : (
       // <Circle />
       <React.Fragment>
-        <Text>{children}</Text>
+        <Text style={{color: 'white'}}>{children}</Text>
         {arrow && (
           <svg
             width="24px"

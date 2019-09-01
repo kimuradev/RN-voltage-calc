@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, KeyboardAvoidingView, Image} from 'react-native';
 
 import Input from '../components/Input';
 import Button from '../components/Button';
 import Result from '../components/Result';
 import Container from '../components/Container';
-import FadeInOut from '../components/FadeInOut';
-import WrapperSvg from '../components/WrapperSvg';
-import VoltageSvg from '../assets/images/voltage.png';
+import FadeIn from '../components/FadeIn';
 
 const getInitialData = () => {
   return {
@@ -45,6 +43,7 @@ export default function Home() {
   };
 
   const onClickCalculate = () => {
+    console.log('clicou');
     setIsLoading(true);
     setCalculated(true);
     setResetField(false);
@@ -157,6 +156,7 @@ export default function Home() {
         value={data.vin.value}
         isDisabled={data.r1.isValid && data.r2.isValid && data.vout.isValid}
         reset={resetField}
+        keyboard="numeric"
       />
       <Input
         name="r1"
@@ -165,6 +165,7 @@ export default function Home() {
         value={data.r1.value}
         isDisabled={data.vin.isValid && data.r2.isValid && data.vout.isValid}
         reset={resetField}
+        keyboard="numeric"
       />
       <Input
         name="r2"
@@ -173,6 +174,7 @@ export default function Home() {
         value={data.r2.value}
         isDisabled={data.vin.isValid && data.r1.isValid && data.vout.isValid}
         reset={resetField}
+        keyboard="numeric"
       />
       <Input
         name="vout"
@@ -181,20 +183,26 @@ export default function Home() {
         value={data.vout.value}
         isDisabled={data.vin.isValid && data.r1.isValid && data.r2.isValid}
         reset={resetField}
+        keyboard="numeric"
       />
-      <FadeInOut visible={!calculated}>
-        <WrapperSvg>
-          <Image source={require('../assets/images/voltage.png')} />
-        </WrapperSvg>
-      </FadeInOut>
-      <FadeInOut visible={calculated}>
-        <Result result={result} unit={unit} />
-      </FadeInOut>
+
+      {!calculated ? (
+        <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <Image
+            source={require('../assets/images/voltage.png')}
+            style={{height: 140}}
+            resizeMode="contain"
+          />
+        </View>
+      ) : (
+        <FadeIn>
+          <Result result={result} unit={unit} />
+        </FadeIn>
+      )}
 
       <Button
         title="Calculate"
-        onClick={!calculated ? onClickCalculate : onClickClear}
-        isLoading={isLoading}
+        onPress={!calculated ? onClickCalculate : onClickClear}
         disabled={isButtonDisabled()}>
         {!calculated ? 'CALCUTE' : 'CLEAR'}
       </Button>

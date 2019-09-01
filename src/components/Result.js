@@ -7,7 +7,7 @@ const Wrapper = styled(View)`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 160px;
+  height: 140px;
   margin-bottom: 8px;
 `;
 
