@@ -30,14 +30,25 @@ const Btn = styled(TouchableOpacity)`
   align-items: center;
 
   ${props =>
+    props.schema === "primary" &&
+    css`
+      background-color: #33bb66;
+      color: white;
+    `};
+
+    ${props =>
+    props.schema === "secondary" &&
+    css`
+      background-color: #3366ff;
+      color: white;
+    `};
+
+
+  ${props =>
     props.disabled &&
     css`
       background-color: #cccccc;
       color: white;
-
-      &:hover {
-        background-color: #cccccc;
-      }
     `};
 
   ${props =>

@@ -32,13 +32,6 @@ const Wrapper = styled(View)`
     css`
       border-color: #ff6666;
     `};
-
-  > section {
-    height: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
 `;
 
 const Field = styled(TextInput)`
@@ -51,7 +44,7 @@ const Field = styled(TextInput)`
   color: #666;
   padding-left: 24px;
   height: 100%;
-  width: 300px;
+  width: 280px;
 
   ::placeholder {
     color: #999;
@@ -82,14 +75,17 @@ const Input = props => {
   }, [props.reset]);
 
   const onChange = event => {
+    let numreg = /^[0-9]+$/;
+
     let valid;
-    if (event.length === 0 || event === '0') {
+    if (event.length === 0 || event === '0' || !numreg.test(event)) {
       valid = false;
       setIsValid(false);
     } else {
       valid = true;
       setIsValid(true);
     }
+
     props.onChangeHandler({
       value: event,
       name: props.name,
@@ -133,7 +129,12 @@ const Input = props => {
             <Image
               source={require('../assets/images/error.png')}
               alt="Ícone de erro"
-              style={{marginTop: 6, marginRight: 24, width: 24}}
+              style={{
+                marginTop: 6,
+                marginRight: 24,
+                width: 24,
+                paddingRight: 24,
+              }}
               resizeMode="contain"
             />
           </View>
