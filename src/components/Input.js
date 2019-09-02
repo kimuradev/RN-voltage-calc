@@ -78,7 +78,10 @@ const Input = props => {
     let numreg = /^[0-9]+$/;
 
     let valid;
-    if (event.length === 0 || event === '0' || !numreg.test(event)) {
+    if (event.length === 0) {
+      valid = false;
+      setIsValid(null);
+    } else if (event === '0' || !numreg.test(event)) {
       valid = false;
       setIsValid(false);
     } else {

@@ -3,7 +3,7 @@ import Routes from './routes';
 
 if (__DEV__) {
   console.log('ENTROU EM DEV');
-  require('react-devtools-core').connectToDevTools({port: 8081});
+  require('react-devtools-core').connectToDevTools({port: 8888});
 }
 
 export default function App() {

@@ -9,10 +9,10 @@ import FadeIn from '../components/FadeIn';
 
 const getInitialData = () => {
   return {
-    vin: {value: '', isValid: false},
-    vout: {value: '', isValid: false},
-    r1: {value: '', isValid: false},
-    r2: {value: '', isValid: false},
+    vin: {value: '', isValid: null},
+    vout: {value: '', isValid: null},
+    r1: {value: '', isValid: null},
+    r2: {value: '', isValid: null},
   };
 };
 
@@ -49,8 +49,9 @@ export default function Home() {
     if (
       data.r1.value !== '' &&
       data.r1.value !== null &&
-      (data.r2.value !== '' && data.r2.value !== null) &&
-      (data.vout.value !== '' && data.vout.value !== null)
+      data.r1.isValid &&
+      (data.r2.value !== '' && data.r2.value !== null && data.r2.isValid) &&
+      (data.vout.value !== '' && data.vout.value !== null && data.vout.isValid)
     ) {
       setResult(
         (parseFloat(data.vout.value) *
@@ -63,8 +64,9 @@ export default function Home() {
     else if (
       data.vin.value !== '' &&
       data.vin.value !== null &&
-      (data.r2.value !== '' && data.r2.value !== null) &&
-      (data.vout.value !== '' && data.vout.value !== null)
+      data.vin.isValid &&
+      (data.r2.value !== '' && data.r2.value !== null && data.r2.isValid) &&
+      (data.vout.value !== '' && data.vout.value !== null && data.vout.isValid)
     ) {
       setResult(
         (parseFloat(data.vin.value) * parseFloat(data.r2.value)) /
@@ -77,8 +79,9 @@ export default function Home() {
     else if (
       data.r1.value !== '' &&
       data.r1.value !== null &&
-      (data.vin.value !== '' && data.vin.value !== null) &&
-      (data.vout.value !== '' && data.vout.value !== null)
+      data.r1.isValid &&
+      (data.vin.value !== '' && data.vin.value !== null && data.vin.isValid) &&
+      (data.vout.value !== '' && data.vout.value !== null && data.vout.isValid)
     ) {
       setResult(
         (parseFloat(data.vout.value) * parseFloat(data.r1.value)) /
@@ -90,8 +93,9 @@ export default function Home() {
     else if (
       data.r1.value !== '' &&
       data.r1.value !== null &&
-      (data.r2.value !== '' && data.r2.value !== null) &&
-      (data.vin.value !== '' && data.vin.value !== null)
+      data.r1.isValid &&
+      (data.r2.value !== '' && data.r2.value !== null && data.r2.isValid) &&
+      (data.vin.value !== '' && data.vin.value !== null && data.vin.isValid)
     ) {
       setResult(
         (parseFloat(data.vin.value) * parseFloat(data.r2.value)) /
@@ -102,7 +106,6 @@ export default function Home() {
   };
 
   const isButtonDisabled = () => {
-    console.log(data.r1.isValid);
     // calcular resistor de entrada -> I = O * (R1 + R2) / R2
     if (
       data.r1.value !== '' &&
