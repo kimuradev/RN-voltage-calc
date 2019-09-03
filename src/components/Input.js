@@ -110,6 +110,7 @@ const Input = props => {
             id={`id-${name}`}
             name={name}
             onChangeText={onChange}
+            editable={!isDisabled}
             disabled={isDisabled}
             value={value}
             placeholder={placeholder}

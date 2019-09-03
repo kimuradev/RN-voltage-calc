@@ -107,43 +107,19 @@ export default function Home() {
 
   const isButtonDisabled = () => {
     // calcular resistor de entrada -> I = O * (R1 + R2) / R2
-    if (
-      data.r1.value !== '' &&
-      data.r1.value !== null &&
-      data.r1.isValid &&
-      (data.r2.value !== '' && data.r2.value !== null && data.r2.isValid) &&
-      (data.vout.value !== '' && data.vout.value !== null && data.vout.isValid)
-    ) {
+    if (data.r1.isValid && data.r2.isValid && data.vout.isValid) {
       return false;
     }
     // calcular resistor 1 -> R1 = (I * R2 / O) - R2
-    else if (
-      data.vin.value !== '' &&
-      data.vin.value !== null &&
-      data.vin.isValid &&
-      (data.r2.value !== '' && data.r2.value !== null && data.r2.isValid) &&
-      (data.vout.value !== '' && data.vout.value !== null && data.vout.isValid)
-    ) {
+    else if (data.vin.isValid && data.r2.isValid && data.vout.isValid) {
       return false;
     }
     // calcular resistor 2 -> R2 = O * R1 / (I - O)
-    else if (
-      data.r1.value !== '' &&
-      data.r1.value !== null &&
-      data.r1.isValid &&
-      (data.vin.value !== '' && data.vin.value !== null && data.vin.isValid) &&
-      (data.vout.value !== '' && data.vout.value !== null && data.vout.isValid)
-    ) {
+    else if (data.r1.isValid && data.vin.isValid && data.vout.isValid) {
       return false;
     }
     //calcular resistor de saída ->  O = I * R2 / (R1 + R2)
-    else if (
-      data.r1.value !== '' &&
-      data.r1.value !== null &&
-      data.r1.isValid &&
-      (data.r2.value !== '' && data.r2.value !== null && data.r2.isValid) &&
-      (data.vin.value !== '' && data.vin.value !== null && data.vin.isValid)
-    ) {
+    else if (data.r1.isValid && data.r2.isValid && data.vin.isValid) {
       return false;
     } else {
       return true;
@@ -194,7 +170,7 @@ export default function Home() {
         {!calculated ? (
           <Image
             source={require('../assets/images/voltage.png')}
-            style={{height: 140}}
+            style={{minHeight: 140, maxHeight: 200}}
             resizeMode="contain"
           />
         ) : (
