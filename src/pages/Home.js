@@ -17,6 +17,10 @@ const getInitialData = () => {
 };
 
 export default function Home() {
+  navigationOptions = {
+    title: 'Welcome',
+  };
+
   const [data, setData] = useState(getInitialData(), null);
   const [result, setResult] = useState(0);
   const [unit, setUnit] = useState('');

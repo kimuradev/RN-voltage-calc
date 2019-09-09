@@ -1,24 +1,37 @@
 import React from 'react';
-import {createAppContainer, createDrawerNavigator} from 'react-navigation';
+import {
+  createAppContainer,
+  createStackNavigator,
+  Button,
+} from 'react-navigation';
 
 import Home from './pages/Home';
-import New from './pages/New';
+import Theory from './pages/Theory';
 
 export default createAppContainer(
-  createDrawerNavigator(
+  createStackNavigator(
     {
       Home,
-      New,
+      Theory,
     },
     {
       defaultNavigationOptions: {
-        headerTintColor: '#000',
-        // headerTitle: (
-        //   <Image
-        //     style={{ width: 130, height: 30, marginHorizontal: 20 }}
-        //     source={Logo}
+        // headerLeft: (
+        //   <Button
+        //     onPress={() => props.navigation.navigate('DrawerOpen')}
+        //     title="="
         //   />
         // ),
+        title: 'Voltage Divider Calculator',
+        headerTintColor: '#3366ff',
+        headerStyle: {
+          backgroundColor: '#fff',
+        },
+        headerTitleStyle: {
+          textAlign: 'center',
+          flexGrow: 1,
+        },
+
         headerBackTitle: null,
       },
       mode: 'modal',
