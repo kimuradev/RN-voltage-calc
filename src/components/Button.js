@@ -1,9 +1,6 @@
 import React from 'react';
-import {Text, Button as RNButton, TouchableOpacity} from 'react-native';
+import {Text, TouchableOpacity} from 'react-native';
 import styled, {css} from 'styled-components';
-import PropTypes from 'prop-types';
-
-// import Circle from './animations/Circle';
 
 const Btn = styled(TouchableOpacity)`
   border-radius: 6px;
@@ -30,19 +27,18 @@ const Btn = styled(TouchableOpacity)`
   align-items: center;
 
   ${props =>
-    props.schema === "primary" &&
+    props.schema === 'primary' &&
     css`
       background-color: #33bb66;
       color: white;
     `};
 
-    ${props =>
-    props.schema === "secondary" &&
+  ${props =>
+    props.schema === 'secondary' &&
     css`
       background-color: #3366ff;
       color: white;
     `};
-
 
   ${props =>
     props.disabled &&
@@ -72,7 +68,6 @@ const Button = ({arrow, children, isLoading, ...props}) => (
     {isLoading ? (
       <Text>Loading...</Text>
     ) : (
-      // <Circle />
       <React.Fragment>
         <Text style={{color: 'white'}}>{children}</Text>
         {arrow && (
@@ -106,13 +101,5 @@ const Button = ({arrow, children, isLoading, ...props}) => (
     )}
   </Btn>
 );
-
-Button.defaultProps = {
-  arrow: false,
-};
-
-Button.propTypes = {
-  arrow: PropTypes.bool,
-};
 
 export default Button;

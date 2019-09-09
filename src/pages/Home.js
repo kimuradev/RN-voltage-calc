@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, KeyboardAvoidingView, Image} from 'react-native';
+import {View, Image} from 'react-native';
 
 import Input from '../components/Input';
 import Button from '../components/Button';
@@ -17,6 +17,10 @@ const getInitialData = () => {
 };
 
 export default function Home() {
+  navigationOptions = {
+    title: 'Welcome',
+  };
+
   const [data, setData] = useState(getInitialData(), null);
   const [result, setResult] = useState(0);
   const [unit, setUnit] = useState('');
