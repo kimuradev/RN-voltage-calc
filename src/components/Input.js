@@ -121,7 +121,7 @@ const Input = props => {
         {isValid && (
           <View>
             <Image
-              source={require('../assets/images/check.png')}
+              source={require('../assets/images/check.webp')}
               alt="Ícone de sucesso"
               style={{marginTop: 6, marginRight: 24, width: 24}}
               resizeMode="contain"
@@ -131,7 +131,7 @@ const Input = props => {
         {isValid === false && (
           <View>
             <Image
-              source={require('../assets/images/error.png')}
+              source={require('../assets/images/error.webp')}
               alt="Ícone de erro"
               style={{
                 marginTop: 6,

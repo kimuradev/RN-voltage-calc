@@ -173,7 +173,7 @@ export default function Home() {
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
         {!calculated ? (
           <Image
-            source={require('../assets/images/voltage.png')}
+            source={require('../assets/images/voltage.webp')}
             style={{minHeight: 140, maxHeight: 200}}
             resizeMode="contain"
           />
