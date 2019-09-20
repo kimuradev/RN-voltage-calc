@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 
 import {View, Text} from 'react-native';
 
-export default class New extends Component {
+export default class Theory extends Component {
   render() {
     return (
       <View>
-        <Text>New</Text>
+        <Text>Theory</Text>
       </View>
     );
   }
