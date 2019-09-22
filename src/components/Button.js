@@ -12,8 +12,6 @@ const Btn = styled(TouchableOpacity)`
   color: white;
   background-color: #3366ff;
   width: 100%;
-  margin-top: 24px;
-  margin-bottom: 24px;
   font-size: 16px;
   font-weight: 600;
   font-style: normal;
