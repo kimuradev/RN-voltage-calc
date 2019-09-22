@@ -44,7 +44,7 @@ const Field = styled(TextInput)`
   color: #666;
   padding-left: 24px;
   height: 100%;
-  width: 280px;
+  min-width: 85%;
 
   ::placeholder {
     color: #999;
@@ -62,7 +62,7 @@ const Field = styled(TextInput)`
 
 const Container = styled(View)`
   position: relative;
-  margin: 8px 0;
+  margin: 4px 0;
 `;
 
 const Input = props => {
@@ -79,7 +79,7 @@ const Input = props => {
 
     let valid;
     if (event.length === 0) {
-      valid = false;
+      valid = null;
       setIsValid(null);
     } else if (event === '0' || !numreg.test(event)) {
       valid = false;
@@ -100,7 +100,7 @@ const Input = props => {
     setIsValid(null);
   };
 
-  const {name, placeholder, keyboard, value, isDisabled} = props;
+  const {name, placeholder, keyboard, value, editable, isDisabled} = props;
 
   return (
     <Container>
@@ -110,7 +110,7 @@ const Input = props => {
             id={`id-${name}`}
             name={name}
             onChangeText={onChange}
-            editable={!isDisabled}
+            // editable={isDisabled && isValid === null}
             disabled={isDisabled}
             value={value}
             placeholder={placeholder}
@@ -123,7 +123,11 @@ const Input = props => {
             <Image
               source={require('../assets/images/check.webp')}
               alt="Ícone de sucesso"
-              style={{marginTop: 6, marginRight: 24, width: 24}}
+              style={{
+                marginTop: 6,
+                marginRight: 24,
+                width: 24,
+              }}
               resizeMode="contain"
             />
           </View>
@@ -137,7 +141,6 @@ const Input = props => {
                 marginTop: 6,
                 marginRight: 24,
                 width: 24,
-                paddingRight: 24,
               }}
               resizeMode="contain"
             />

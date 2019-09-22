@@ -7,6 +7,6 @@ const Container = styled(View)`
   justify-content: space-between;
   align-content: center;
   padding: 16px;
-  background-color: white;
+  background-color: #f0f0f0;
 `;
 export default Container;
