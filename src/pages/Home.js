@@ -89,6 +89,13 @@ export default function Home() {
       data.vout.isValid === false
     ) {
       return true;
+    } else if (
+      data.r1.isValid &&
+      data.r2.isValid &&
+      data.vin.isValid &&
+      data.vout.isValid
+    ) {
+      return true;
     }
     // calcular resistor de entrada -> I = O * (R1 + R2) / R2
     else if (data.r1.isValid && data.r2.isValid && data.vout.isValid) {
@@ -117,11 +124,7 @@ export default function Home() {
         flex: 1,
         backgroundColor: '#f0f0f0',
       }}>
-      <ScrollView
-        style={{
-          display: 'flex',
-          flex: 1,
-        }}>
+      <ScrollView contentContainerStyle={{flexGrow: 1}}>
         <Container>
           <View
             style={{
@@ -143,7 +146,7 @@ export default function Home() {
                 data.r1.isValid && data.r2.isValid && data.vout.isValid
               }
               reset={resetField}
-              keyboard="numeric"
+              keyboard="number-pad"
             />
             <Input
               name="r1"
@@ -154,7 +157,7 @@ export default function Home() {
                 data.vin.isValid && data.r2.isValid && data.vout.isValid
               }
               reset={resetField}
-              keyboard="numeric"
+              keyboard="number-pad"
             />
             <Input
               name="r2"
@@ -165,7 +168,7 @@ export default function Home() {
                 data.vin.isValid && data.r1.isValid && data.vout.isValid
               }
               reset={resetField}
-              keyboard="numeric"
+              keyboard="number-pad"
             />
             <Input
               name="vout"
@@ -176,7 +179,7 @@ export default function Home() {
                 data.vin.isValid && data.r1.isValid && data.r2.isValid
               }
               reset={resetField}
-              keyboard="numeric"
+              keyboard="number-pad"
             />
           </View>
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
