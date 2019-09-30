@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
-import {View, Image, SafeAreaView, ScrollView} from 'react-native';
+import {View, Image, SafeAreaView, ScrollView, Text} from 'react-native';
 
 import Input from '../components/Input';
 import Button from '../components/Button';
 import Result from '../components/Result';
 import Container from '../components/Container';
 import FadeIn from '../components/FadeIn';
+
+import I18n from '../components/translate/I18n';
 
 const getInitialData = () => {
   return {
@@ -126,6 +128,8 @@ export default function Home() {
       }}>
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
         <Container>
+          <Text>{I18n.t('hello')}</Text>
+
           <View
             style={{
               backgroundColor: '#d9d9d9',
